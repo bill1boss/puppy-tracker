@@ -1,82 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const skillForm = document.getElementById('skill-form');
-  const skillInput = document.getElementById('skill-input');
-  const skillsList = document.getElementById('skills-list');
+const skillForm = document.getElementById('skill-form');
+const skillInput = document.getElementById('skill-input');
+const skillsList = document.getElementById('skills-list');
 
-  let skills = JSON.parse(localStorage.getItem('puppySkills')) || [];
+// Αρχικά βασικά skills στα ελληνικά
+const defaultSkills = [
+  { name: 'Κάθισε (Sit)', rating: 0 },
+  { name: 'Μείνε (Stay)', rating: 0 },
+  { name: 'Έλεγχος Δαγκώματος (Teething)', rating: 0 },
+  { name: 'Σταμάτημα Γαψίματος (Demand Barking)', rating: 0 },
+  { name: 'Βόλτα με Λουρί', rating: 0 }
+];
 
-  function saveSkills() {
-    localStorage.setItem('puppySkills', JSON.stringify(skills));
-  }
+// Φόρτωση από το LocalStorage ή χρήση των προεπιλεγμένων
+let skills = JSON.parse(localStorage.getItem('puppy_skills_paws')) || defaultSkills;
 
-  function renderSkills() {
-    skillsList.innerHTML = '';
+function saveSkills() {
+  localStorage.setItem('puppy_skills_paws', JSON.stringify(skills));
+}
 
-    skills.forEach((skill, index) => {
-      const li = document.createElement('li');
-      li.className = 'skill-item';
+function renderSkills() {
+  skillsList.innerHTML = '';
 
-      const skillName = document.createElement('span');
-      skillName.className = 'skill-name';
-      skillName.textContent = skill.name;
+  skills.forEach((skill, index) => {
+    const li = document.createElement('li');
 
-      const ratingContainer = document.createElement('div');
-      ratingContainer.className = 'rating-paws';
-
-      // Δημιουργία 5 πατουσών ως ΚΟΥΜΠΙΑ για να ανταποκρίνονται στα κινητά
-      for (let i = 1; i <= 5; i++) {
-        const paw = document.createElement('button');
-        paw.type = 'button';
-        paw.className = 'paw';
-        paw.innerHTML = '🐾';
-
-        if (i <= skill.rating) {
-          paw.classList.add('active');
-        }
-
-        paw.addEventListener('click', (e) => {
-          e.preventDefault();
-          skills[index].rating = i;
-          saveSkills();
-          renderSkills();
-        });
-
-        ratingContainer.appendChild(paw);
-      }
-
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.className = 'delete-btn';
-      deleteBtn.textContent = '❌';
-      deleteBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        skills.splice(index, 1);
-        saveSkills();
-        renderSkills();
-      });
-
-      li.appendChild(skillName);
-      li.appendChild(ratingContainer);
-      li.appendChild(deleteBtn);
-
-      skillsList.appendChild(li);
-    });
-  }
-
-  skillForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const newSkillName = skillInput.value.trim();
-
-    if (newSkillName !== '') {
-      skills.push({
-        name: newSkillName,
-        rating: 0
-      });
-      saveSkills();
-      renderSkills();
-      skillInput.value = '';
+    // Δημιουργία των 5 πατουσών δυναμικά
+    let pawsHTML = '';
+    for (let i = 1; i <= 5; i++) {
+      const activeClass = i <= skill.rating ? 'active' : '';
+      pawsHTML += `<span class="paw ${activeClass}" onclick="setRating(${index}, ${i})" title="${i} από 5">🐾</span>`;
     }
-  });
 
+    li.innerHTML = `
+      <div class="skill-header">
+        <span class="skill-name">${skill.name}</span>
+        <button class="delete-btn" onclick="deleteSkill(${index})" title="Διαγραφή">🗑️</button>
+      </div>
+      <div class="paws">
+        ${pawsHTML}
+      </div>
+    `;
+
+    skillsList.appendChild(li);
+  });
+}
+
+// Συνάρτηση για ορισμό βαθμολογίας με κλικ στις πατούσες (1 έως 5)
+function setRating(skillIndex, pawCount) {
+  skills[skillIndex].rating = pawCount;
+  saveSkills();
   renderSkills();
+}
+
+// Προσθήκη νέου skill από τη φόρμα
+skillForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = skillInput.value.trim();
+
+  if (name !== '') {
+    skills.push({ name: name, rating: 0 });
+    saveSkills();
+    renderSkills();
+    skillInput.value = '';
+  }
 });
+
+// Διαγραφή skill
+function deleteSkill(index) {
+  skills.splice(index, 1);
+  saveSkills();
+  renderSkills();
+}
+
+// Αρχική εμφάνιση λίστας
+renderSkills();
