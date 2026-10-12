@@ -1,166 +1,23 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Ολόκληρη η σελίδα με ανοιχτό γαλάζιο φόντο */
-body {
-  background-color: #d0ebff; 
-  color: #0b2545; /* Σκούρο μπλε γράμματα */
+/* Στυλ για τις πατούσες αξιολόγησης (ως κουμπιά) */
+.rating-paws {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 15px;
-}
-
-/* Κεντρικό πλαίσιο */
-.tracker-container {
-  background: transparent;
-  padding: 20px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Τεράστιος Τίτλος */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-  text-align: center;
-  color: #0b2545;
-  font-weight: 800;
-}
-
-/* Μεγάλος Υπότιτλος */
-.subtitle {
-  font-size: 1.35rem;
-  color: #0b2545;
-  text-align: center;
-  margin-bottom: 30px;
-  font-weight: 600;
-}
-
-#skill-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 35px;
-}
-
-/* Πεδίο εισαγωγής νέας εντολής - Πολύ μεγάλα γράμματα */
-input[type="text"] {
-  width: 100%;
-  padding: 18px;
-  border: 2px solid #0b2545;
-  border-radius: 12px;
-  background-color: rgba(162, 210, 255, 0.65);
-  color: #0b2545;
-  font-size: 1.5rem;
-  font-weight: 700;
-  outline: none;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.12);
-}
-
-input[type="text"]::placeholder {
-  color: #0b2545;
-  opacity: 0.75;
-  font-size: 1.35rem;
-}
-
-input[type="text"]:focus {
-  border-color: #041429;
-  background-color: rgba(162, 210, 255, 0.85);
-  box-shadow: 0 4px 16px rgba(11, 37, 69, 0.25);
-}
-
-/* Κουμπί προσθήκης - Μεγάλα έντονα γράμματα */
-button#add-btn {
-  padding: 18px;
-  background-color: #0b2545;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.2);
-  transition: background 0.2s, transform 0.1s;
-}
-
-button#add-btn:hover {
-  background-color: #041429;
-}
-
-button#add-btn:active {
-  transform: scale(0.98);
-}
-
-ul {
-  list-style: none;
-}
-
-/* Κουτιά των εντολών */
-li {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(162, 210, 255, 0.75);
-  border: 2px solid #0b2545;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 18px;
-  gap: 15px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 16px rgba(11, 37, 69, 0.15);
-}
-
-.skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Τεράστια γράμματα για το όνομα της εντολής */
-.skill-name {
-  font-size: 1.7rem;
-  font-weight: 800;
-  color: #0b2545;
-}
-
-/* Σύστημα με Πατούσες */
-.paws {
-  display: flex;
-  gap: 15px;
-  cursor: pointer;
+  gap: 4px;
+  user-select: none;
 }
 
 .paw {
-  font-size: 2.3rem; /* Ακόμα μεγαλύτερες πατούσες */
-  color: rgba(11, 37, 69, 0.3);
-  transition: color 0.15s ease, transform 0.1s ease;
-}
-
-.paw:hover {
-  transform: scale(1.15);
-}
-
-.paw.active {
-  color: #0b2545;
-}
-
-.delete-btn {
-  background: transparent;
+  background: none;
   border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-size: 1.6rem;
-  padding: 6px;
-  border-radius: 6px;
-  color: #d90429;
+  color: #ccc;
+  transition: color 0.2s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent; /* Αφαίρεση σκιάς κλικ στα κινητά */
 }
 
-.delete-btn:hover {
-  background: rgba(217, 4, 41, 0.15);
+/* Ενεργή πατούσα (Μωβ) */
+.paw.active {
+  color: #8a2be2 !important;
 }
