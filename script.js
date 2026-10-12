@@ -2,7 +2,7 @@ const skillForm = document.getElementById('skill-form');
 const skillInput = document.getElementById('skill-input');
 const skillsList = document.getElementById('skills-list');
 
-// Αρχικά βασικά skills στα ελληνικά (με 0 αστέρια αρχικά)
+// Αρχικά βασικά skills στα ελληνικά
 const defaultSkills = [
   { name: 'Κάθισε (Sit)', rating: 0 },
   { name: 'Μείνε (Stay)', rating: 0 },
@@ -12,10 +12,10 @@ const defaultSkills = [
 ];
 
 // Φόρτωση από το LocalStorage ή χρήση των προεπιλεγμένων
-let skills = JSON.parse(localStorage.getItem('puppy_skills_el')) || defaultSkills;
+let skills = JSON.parse(localStorage.getItem('puppy_skills_paws')) || defaultSkills;
 
 function saveSkills() {
-  localStorage.setItem('puppy_skills_el', JSON.stringify(skills));
+  localStorage.setItem('puppy_skills_paws', JSON.stringify(skills));
 }
 
 function renderSkills() {
@@ -24,11 +24,11 @@ function renderSkills() {
   skills.forEach((skill, index) => {
     const li = document.createElement('li');
 
-    // Δημιουργία των 5 αστεριών δυναμικά
-    let starsHTML = '';
+    // Δημιουργία των 5 πατουσών δυναμικά
+    let pawsHTML = '';
     for (let i = 1; i <= 5; i++) {
       const activeClass = i <= skill.rating ? 'active' : '';
-      starsHTML += `<span class="star ${activeClass}" onclick="setRating(${index}, ${i})">★</span>`;
+      pawsHTML += `<span class="paw ${activeClass}" onclick="setRating(${index}, ${i})" title="${i} από 5">🐾</span>`;
     }
 
     li.innerHTML = `
@@ -36,8 +36,8 @@ function renderSkills() {
         <span class="skill-name">${skill.name}</span>
         <button class="delete-btn" onclick="deleteSkill(${index})" title="Διαγραφή">🗑️</button>
       </div>
-      <div class="stars">
-        ${starsHTML}
+      <div class="paws">
+        ${pawsHTML}
       </div>
     `;
 
@@ -45,9 +45,9 @@ function renderSkills() {
   });
 }
 
-// Συνάρτηση για ορισμό βαθμολογίας με κλικ στα αστέρια (1 έως 5)
-function setRating(skillIndex, starCount) {
-  skills[skillIndex].rating = starCount;
+// Συνάρτηση για ορισμό βαθμολογίας με κλικ στις πατούσες (1 έως 5)
+function setRating(skillIndex, pawCount) {
+  skills[skillIndex].rating = pawCount;
   saveSkills();
   renderSkills();
 }
