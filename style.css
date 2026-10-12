@@ -5,92 +5,116 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Ολόκληρη η σελίδα με ανοιχτό γαλάζιο φόντο */
 body {
-  background-color: #0b2545; /* Ανοιχτό γαλάζιο background σελίδας */
-  color: #0b2545; /* Σκούρο μπλε βασικό κείμενο */
+  background-color: #d0ebff; 
+  color: #0b2545; /* Σκούρο μπλε γράμματα */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 15px;
 }
 
+/* Κεντρικό πλαίσιο */
 .tracker-container {
-  background: #6daae4; /* Λευκό εσωτερικό πλαίσιο για καθαρότητα */
-  padding: 30px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(11, 37, 69, 0.15);
+  background: transparent;
+  padding: 20px;
+  border-radius: 16px;
   width: 100%;
-  max-width: 480px;
+  max-width: 500px;
 }
 
+/* Τεράστιος Τίτλος */
 h1 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
   text-align: center;
-  color: #0b2545; /* Σκούρο μπλε τίτλος */
+  color: #0b2545;
+  font-weight: 800;
 }
 
+/* Μεγάλος Υπότιτλος */
 .subtitle {
-  font-size: 0.85rem;
-  color: #244865; /* Σκούρο μπλε υπότιτλος */
+  font-size: 1.35rem;
+  color: #0b2545;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
 #skill-form {
   display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 35px;
 }
 
+/* Πεδίο εισαγωγής νέας εντολής - Πολύ μεγάλα γράμματα */
 input[type="text"] {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #9ac6ed;
-  border-radius: 6px;
-  background: #95b8e2; /* Σκούρο μπλε background για το input */
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #0b2545;
+  border-radius: 12px;
+  background-color: rgba(162, 210, 255, 0.65);
   color: #0b2545;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   outline: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.12);
 }
 
 input[type="text"]::placeholder {
-  color: #6c8ea8;
+  color: #0b2545;
+  opacity: 0.75;
+  font-size: 1.35rem;
 }
 
 input[type="text"]:focus {
-  border-color: #134074;
+  border-color: #041429;
+  background-color: rgba(162, 210, 255, 0.85);
+  box-shadow: 0 4px 16px rgba(11, 37, 69, 0.25);
 }
 
-button {
-  padding: 12px 18px;
-  background-color: #134074; /* Σκούρο μπλε κουμπί */
-  color: #ffffff; /* Λευκά γράμματα κουμπιού */
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
-}
-
-button:hover {
+/* Κουμπί προσθήκης - Μεγάλα έντονα γράμματα */
+button#add-btn {
+  padding: 18px;
   background-color: #0b2545;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.2);
+  transition: background 0.2s, transform 0.1s;
+}
+
+button#add-btn:hover {
+  background-color: #041429;
+}
+
+button#add-btn:active {
+  transform: scale(0.98);
 }
 
 ul {
   list-style: none;
 }
 
+/* Κουτιά των εντολών */
 li {
   display: flex;
   flex-direction: column;
-  background: #f0f7ff; /* Απαλό γαλάζιο κουτάκι skill */
-  border: 1px solid #cce3de;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 12px;
-  gap: 10px;
+  background-color: rgba(162, 210, 255, 0.75);
+  border: 2px solid #0b2545;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  gap: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px rgba(11, 37, 69, 0.15);
 }
 
 .skill-header {
@@ -99,43 +123,44 @@ li {
   align-items: center;
 }
 
+/* Τεράστια γράμματα για το όνομα της εντολής */
 .skill-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0b2545; /* Σκούρο μπλε όνομα skill */
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #0b2545;
 }
 
 /* Σύστημα με Πατούσες */
 .paws {
   display: flex;
-  gap: 8px;
+  gap: 15px;
   cursor: pointer;
 }
 
 .paw {
-  font-size: 1.3rem;
-  color: #b0c4de; /* Ανοιχτό γκρι-γαλάζιο για ανενεργή πατούσα */
+  font-size: 2.3rem; /* Ακόμα μεγαλύτερες πατούσες */
+  color: rgba(11, 37, 69, 0.3);
   transition: color 0.15s ease, transform 0.1s ease;
 }
 
 .paw:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .paw.active {
-  color: #134074; /* Σκούρο μπλε για ενεργή πατούσα */
+  color: #0b2545;
 }
 
 .delete-btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.1rem;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 1.6rem;
+  padding: 6px;
+  border-radius: 6px;
   color: #d90429;
 }
 
 .delete-btn:hover {
-  background: rgba(217, 4, 41, 0.1);
+  background: rgba(217, 4, 41, 0.15);
 }
