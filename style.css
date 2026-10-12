@@ -3,6 +3,16 @@
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Βελτίωση αφής για όλη την εφαρμογή σε iOS */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Ειδική ρύθμιση για τα πεδία εισαγωγής ώστε να επιτρέπουν την επιλογή κειμένου */
+input[type="text"] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 /* Ολόκληρη η σελίδα με ανοιχτό γαλάζιο φόντο */
@@ -89,6 +99,7 @@ button#add-btn {
   font-weight: bold;
   box-shadow: 0 4px 12px rgba(11, 37, 69, 0.2);
   transition: background 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button#add-btn:hover {
@@ -133,22 +144,39 @@ li {
 /* Σύστημα με Πατούσες */
 .paws {
   display: flex;
-  gap: 15px;
+  gap: 10px; /* Μικρότερο κενό για να χωράνε καλύτερα */
+  justify-content: center; /* Κεντράρισμα των πατουσών */
+  touch-action: manipulation;
+}
+
+.paw-btn {
+  background: none;
+  border: none;
+  padding: 5px; /* Περιοχή αφής */
   cursor: pointer;
+  transition: transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.paw {
-  font-size: 2.3rem; /* Ακόμα μεγαλύτερες πατούσες */
-  color: rgba(11, 37, 69, 0.3);
-  transition: color 0.15s ease, transform 0.1s ease;
+.paw-btn:active {
+  transform: scale(0.9); /* Εφέ πατήματος */
 }
 
-.paw:hover {
-  transform: scale(1.15);
+/* Το SVG γραφικό της πατούσας */
+.paw-icon {
+  width: 40px; /* Μέγεθος SVG */
+  height: 40px;
+  /* Αρχικό χρώμα: Γκρι-μπλε */
+  fill: rgba(11, 37, 69, 0.25); 
+  transition: fill 0.15s ease;
 }
 
-.paw.active {
-  color: #0b2545;
+/* Χρώμα όταν η πατούσα είναι ενεργή: Σκούρο Μπλε */
+.paw-btn.active .paw-icon {
+  fill: #0b2545;
 }
 
 .delete-btn {
@@ -159,6 +187,7 @@ li {
   padding: 6px;
   border-radius: 6px;
   color: #d90429;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .delete-btn:hover {
