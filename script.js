@@ -2,7 +2,6 @@ const skillForm = document.getElementById('skill-form');
 const skillInput = document.getElementById('skill-input');
 const skillsList = document.getElementById('skills-list');
 
-// Αρχικά βασικά skills στα ελληνικά
 const defaultSkills = [
   { name: 'Κάθισε (Sit)', rating: 0 },
   { name: 'Μείνε (Stay)', rating: 0 },
@@ -11,13 +10,18 @@ const defaultSkills = [
   { name: 'Βόλτα με Λουρί', rating: 0 }
 ];
 
-// Φόρτωση από το LocalStorage ή χρήση των προεπιλεγμένων
 let skills = JSON.parse(localStorage.getItem('puppy_skills_paws')) || defaultSkills;
 
-// Το SVG γραφικό της πατούσας ως string
+// Νέο, ρεαλιστικό SVG πατούσας (μεγάλο κεντρικό μαξιλαράκι + 4 δάχτυλα)
 const pawSVG = `
 <svg class="paw-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <path d="M256 224c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm128-96c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-256 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm128-64c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zM256 480c61.9 0 112-50.1 112-112s-50.1-112-112-112-112 50.1-112 112 50.1 112 112 112z"/>
+  <!-- Κεντρικό μεγάλο μαξιλαράκι -->
+  <path d="M256 224c-53 0-96 35.8-96 80 0 25.4 14.2 48 37.1 62.9C215.9 375.4 235.3 384 256 384s40.1-8.6 58.9-17.1C337.8 352 352 329.4 352 304c0-44.2-43-80-96-80z"/>
+  <!-- Πάνω 4 δαχτυλάκια -->
+  <circle cx="136" cy="192" r="36"/>
+  <circle cx="216" cy="136" r="40"/>
+  <circle cx="296" cy="136" r="40"/>
+  <circle cx="376" cy="192" r="36"/>
 </svg>
 `;
 
@@ -31,7 +35,6 @@ function renderSkills() {
   skills.forEach((skill, index) => {
     const li = document.createElement('li');
 
-    // Δημιουργία των 5 πατουσών ως κουμπιά με SVG
     let pawsHTML = '';
     for (let i = 1; i <= 5; i++) {
       const activeClass = i <= skill.rating ? 'active' : '';
@@ -55,14 +58,12 @@ function renderSkills() {
   });
 }
 
-// Συνάρτηση για ορισμό βαθμολογίας (1 έως 5)
 function setRating(skillIndex, pawCount) {
   skills[skillIndex].rating = pawCount;
   saveSkills();
   renderSkills();
 }
 
-// Προσθήκη νέου skill από τη φόρμα
 skillForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = skillInput.value.trim();
@@ -75,12 +76,10 @@ skillForm.addEventListener('submit', (e) => {
   }
 });
 
-// Διαγραφή skill
 function deleteSkill(index) {
   skills.splice(index, 1);
   saveSkills();
   renderSkills();
 }
 
-// Αρχική εμφάνιση λίστας
 renderSkills();

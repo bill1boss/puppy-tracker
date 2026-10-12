@@ -3,22 +3,19 @@
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Βελτίωση αφής για όλη την εφαρμογή σε iOS */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
 }
 
-/* Ειδική ρύθμιση για τα πεδία εισαγωγής ώστε να επιτρέπουν την επιλογή κειμένου */
 input[type="text"] {
   -webkit-user-select: text;
   user-select: text;
 }
 
-/* Ολόκληρη η σελίδα με ανοιχτό γαλάζιο φόντο */
 body {
   background-color: #d0ebff; 
-  color: #0b2545; /* Σκούρο μπλε γράμματα */
+  color: #0b2545;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +23,6 @@ body {
   padding: 15px;
 }
 
-/* Κεντρικό πλαίσιο */
 .tracker-container {
   background: transparent;
   padding: 20px;
@@ -35,7 +31,6 @@ body {
   max-width: 500px;
 }
 
-/* Τεράστιος Τίτλος */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 12px;
@@ -44,7 +39,6 @@ h1 {
   font-weight: 800;
 }
 
-/* Μεγάλος Υπότιτλος */
 .subtitle {
   font-size: 1.35rem;
   color: #0b2545;
@@ -60,7 +54,6 @@ h1 {
   margin-bottom: 35px;
 }
 
-/* Πεδίο εισαγωγής νέας εντολής - Πολύ μεγάλα γράμματα */
 input[type="text"] {
   width: 100%;
   padding: 18px;
@@ -87,7 +80,6 @@ input[type="text"]:focus {
   box-shadow: 0 4px 16px rgba(11, 37, 69, 0.25);
 }
 
-/* Κουμπί προσθήκης - Μεγάλα έντονα γράμματα */
 button#add-btn {
   padding: 18px;
   background-color: #0b2545;
@@ -114,7 +106,6 @@ ul {
   list-style: none;
 }
 
-/* Κουτιά των εντολών */
 li {
   display: flex;
   flex-direction: column;
@@ -134,25 +125,23 @@ li {
   align-items: center;
 }
 
-/* Τεράστια γράμματα για το όνομα της εντολής */
 .skill-name {
   font-size: 1.7rem;
   font-weight: 800;
   color: #0b2545;
 }
 
-/* Σύστημα με Πατούσες */
 .paws {
   display: flex;
-  gap: 10px; /* Μικρότερο κενό για να χωράνε καλύτερα */
-  justify-content: center; /* Κεντράρισμα των πατουσών */
+  gap: 6px;
+  justify-content: center;
   touch-action: manipulation;
 }
 
 .paw-btn {
   background: none;
   border: none;
-  padding: 5px; /* Περιοχή αφής */
+  padding: 2px;
   cursor: pointer;
   transition: transform 0.1s ease;
   -webkit-tap-highlight-color: transparent;
@@ -162,21 +151,19 @@ li {
 }
 
 .paw-btn:active {
-  transform: scale(0.9); /* Εφέ πατήματος */
+  transform: scale(0.9);
 }
 
-/* Το SVG γραφικό της πατούσας */
+/* Το SVG εικονίδιο πατούσας - Αυξημένο μέγεθος (55px) */
 .paw-icon {
-  width: 40px; /* Μέγεθος SVG */
-  height: 40px;
-  /* Αρχικό χρώμα: Γκρι-μπλε */
-  fill: rgba(11, 37, 69, 0.25); 
+  width: 55px;
+  height: 55px;
+  fill: rgba(11, 37, 69, 0.25); /* Αρχικό χρώμα (ανοιχτό) */
   transition: fill 0.15s ease;
 }
 
-/* Χρώμα όταν η πατούσα είναι ενεργή: Σκούρο Μπλε */
 .paw-btn.active .paw-icon {
-  fill: #0b2545;
+  fill: #0b2545; /* Χρώμα όταν είναι ενεργό (σκούρο μπλε) */
 }
 
 .delete-btn {
