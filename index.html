@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Εκπαίδευση Κουταβιού - Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="tracker-container">
+    <h1>🐾 Πρόοδος Εκπαίδευσης Κουταβιού</h1>
+    <p class="subtitle">Παρακολουθήστε την πρόοδο και τη βαθμολογία (από 1 έως 5 αστέρια)</p>
+
+    <!-- Φόρμα προσθήκης νέας εντολής/skill -->
+    <form id="skill-form">
+      <input type="text" id="skill-input" placeholder="Προσθέστε νέα εντολή (π.χ. Κάτσε, Μείνε)..." required autocomplete="off">
+      <button type="submit" id="add-btn">Προσθήκη</button>
+    </form>
+
+    <!-- Λίστα skills -->
+    <ul id="skills-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
