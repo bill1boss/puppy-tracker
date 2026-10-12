@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Εκπαίδευση Κουταβιού - Tracker</title>
 
-  <!-- Εικονίδιο για iPhone / iOS (σε μορφή .jpg) -->
-  <link rel="apple-touch-icon" href="app-icon.jpg">
+  <!-- Εικονίδιο για iPhone / iOS -->
+  <link rel="apple-touch-icon" href="app-icon.jpg?v=3">
 
-  <!-- Εικονίδιο για Android & Browsers (σε μορφή .jpg) -->
-  <link rel="icon" type="image/jpeg" href="app-icon.jpg">
+  <!-- Εικονίδια για Android & Browsers -->
+  <link rel="icon" type="image/jpeg" href="app-icon.jpg?v=3">
+  <link rel="shortcut icon" href="app-icon.jpg?v=3" type="image/jpeg">
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Σύνδεση με το CSS με versioning για να μην κρατάει cache το κινητό -->
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -29,6 +31,7 @@
     <ul id="skills-list"></ul>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Σύνδεση με το JavaScript με versioning -->
+  <script src="script.js?v=3"></script>
 </body>
 </html>
